@@ -13,7 +13,7 @@ body {
     border: solid 1px #ccc;
 }
 
-#poster-link {
+.poster-link {
     position: absolute;
     right: 220px;
     top: 50%;
@@ -139,7 +139,8 @@ form a{
     display: flex;
     justify-content: space-evenly;
     padding: 10px;
-    background-color: black;   
+    background-color: #282c34; 
+    margin-bottom: 100px;
     
   }
 
@@ -148,16 +149,12 @@ form a{
     border: none;
     cursor: pointer;
    border-radius: 10px;
-   border: solid 1px #32363e;;
+   background-color: rgb(52, 152, 219);;
     
   }
 
-  .like-button {
-    color:rgb(52, 152, 219);
-  }
-
-  .comment-button {
-    color: rgb(52, 152, 219);
+  .like-button,  .comment-button{
+    color:#fff;
   }
 
   .like-icon, .comment-icon {
@@ -168,4 +165,13 @@ form a{
     font-size: 0.8em;
     margin-top: 5px;
   }
-  
+  .user-info {
+    color: #fff;
+  }
+  #logout{
+    color: #000;
+    float: right;
+    margin-right: 20px;
+    text-decoration: none;
+    
+  }

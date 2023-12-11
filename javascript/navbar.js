@@ -10,9 +10,11 @@ const auth = firebase.auth();
             signInLink.innerText = userName + '님👋';
             signInLink.href = "#";
             // logout if you user click on this button
-            signInLink.addEventListener('click', function() {
+            // create a logout anchor tag in footer with id called footer and create that button with id="logout" and  poster-link class
+            const logout = document.getElementById("logout");
+            logout.innerText = "로그아웃";
+            logout.addEventListener('click', function() {
                 auth.signOut();
-                alert("로그아웃 되었습니다.");
                 location.reload();
             });
         } else {
