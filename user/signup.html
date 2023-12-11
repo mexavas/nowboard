@@ -2,30 +2,75 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입페이지</title>
-    <link rel="stylesheet" href="./../css/global.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입페이지</title>
+  <link rel="stylesheet" href="./../css/global.css">
 </head>
 
 <body>
-    <section>
-        <div class="login-container">
-             <h2>계정을 만드세요</h2>
-            <form class="login-form">
-                <input type="text" id="username" name="username" placeholder="이름을 입력해주세요">
-                <input type="password" id="password" name="password" placeholder="비밀번호를 입력해주세요">
-                <input type="password" id="password" name="password" placeholder="비밀번호를 다시 입력해주세요">
-              <button type="submit">계정을 만들기</button>
-              <a href="./login.html">계정이 있으신가요?</a>
-            </form>
-            <div class="rotated-box"></div>
-            </div>
-        </section>
+  <section>
+    <div class="login-container">
+      <h2>계정을 만드세요</h2>
+      <form class="signup-form">
+        <input type="text" id="username" name="username" placeholder="이름을 입력해주세요">
+        <input type="text" id="email" name="email" placeholder="이메일을 입력해주세요">
+        <input type="password" id="password" name="password" placeholder="8자 이상 입력(문자/숫자/기호 사용 가능)">
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="비밀번호를 다시 입력해주세요">
 
-    <footer>
-        &copy; 2023 백석대학교
-    </footer>
+        <button type="button" onclick="signup()">계정을 만들기</button>
+        <a href="./login.html">계정이 있으신가요?</a>
+      </form>
+      <div class="rotated-box"></div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2023 백석대학교
+  </footer>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+  <script src="./../javascript/firebase.js"></script>
+  <script>
+    // Initialize Firebase with your configuration
+    firebase.initializeApp(firebaseConfig);
+
+    function signup() {
+      const name = document.getElementById("username").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+
+      if (password !== confirmPassword) {
+        alert("비밀번호가 일치하지 않습니다.");
+        return;
+      }
+
+      // Create user with email and password
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log("User created:", user);
+          // Add user name to authentication profile
+          return user.updateProfile({
+            displayName: name
+          });
+        })
+        .then(() => {
+          // Update successful
+          console.log("Name added to user:", firebase.auth().currentUser);
+          // Redirect to the dashboard or another page
+          window.location.href = "./login.html";
+        })
+        .catch((error) => {
+          // Handle errors
+          console.error("Error creating user:", error.message);
+          alert("회원가입 중 오류가 발생했습니다. 다시 시도해주세요.");
+        });
+    }
+  </script>
 </body>
 
 </html>
