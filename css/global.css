@@ -144,7 +144,7 @@ form a{
     
   }
 
-  .like-button, .comment-button {
+  .like-button, .comment-button, .share-button {
     padding: 8px;
     border: none;
     cursor: pointer;
@@ -153,11 +153,11 @@ form a{
     
   }
 
-  .like-button,  .comment-button{
+  .like-button,  .comment-button, .share-button {
     color:#fff;
   }
 
-  .like-icon, .comment-icon {
+  .like-icon, .comment-icon , .share-icon {
     font-size: 18px;
   }
   .error-message {
@@ -175,3 +175,8 @@ form a{
     text-decoration: none;
     
   }
+  .like-comment-count{
+    color: #000;
+    font-size: 14px;
+    padding:5px;
+}
