@@ -23,6 +23,17 @@ body {
     font-weight: bold;
     font-size: 1.17em;
 }
+.create-poster{
+  position: absolute;
+  right: 330px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.17em;
+}
+
 
 #sign-in-link {
     padding: 10px 30px;
@@ -141,6 +152,7 @@ form a{
     padding: 10px;
     background-color: #282c34; 
     margin-bottom: 100px;
+    margin-top: 0px;
     
   }
 
@@ -175,6 +187,13 @@ form a{
     text-decoration: none;
     
   }
+  #owner{
+    color: #000;
+    float: right;
+    margin-left: 20px;
+    text-decoration: none;
+    
+  }
   .like-comment-count{
     color: #000;
     font-size: 14px;
@@ -187,7 +206,7 @@ form a{
 
 .carousel-track {
   display: flex;
-  transition: transform 0.5s ease-in-out
+  transition: transform 0.5s ease-in-out;
 }
 
 .carousel-item {
@@ -211,4 +230,12 @@ form a{
   margin-top: 20px;
   margin-bottom: 50px;
 
+}
+.title-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+  background-color: #282c34; 
+  margin-bottom: 0px;
+  
 }
