@@ -7,11 +7,20 @@ const auth = firebase.auth();
         if (user) {
 
             // User is logged in
+            const userEmail = user.email;
             const userName = user.displayName;
-            signInLink.innerText = '포스터 올리기👆';
-            signInLink.href = "./create.html";
-            // logout if you user click on this button
-            // create a logout anchor tag in footer with id called footer and create that button with id="logout" and  poster-link class
+            signInLink.removeAttribute("id");
+            signInLink.classList.add("profile");
+            signInLink.innerText = "";
+            signInLink.href = "/user/profile.html";
+            // <i class="fas fa-user"></i>
+            const icon = document.createElement("i");
+            icon.classList.add("fas");
+            icon.classList.add("fa-user");
+            signInLink.appendChild(icon);
+
+            const owner = document.getElementById("owner");
+            owner.innerText = userName + "님";
             const logout = document.getElementById("logout");
             logout.innerText = "로그아웃";
             logout.addEventListener('click', function() {
@@ -20,7 +29,9 @@ const auth = firebase.auth();
                     auth.signOut();
                     location.reload();
                 }
+                
             })
+
         } else {
             // User is not logged in
             signInLink.innerText = "로그인하세요";
